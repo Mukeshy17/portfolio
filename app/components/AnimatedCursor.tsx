@@ -1,59 +1,58 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { frame, motion, useMotionValue, useSpring } from "motion/react"
+import { RefObject, useEffect, useRef } from "react"
 
 export default function AnimatedCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [clicked, setClicked] = useState(false);
-  const [hovered, setHovered] = useState(false);
+    const ref = useRef<HTMLDivElement>(null)
+    const { x, y } = useFollowPointer(ref)
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseDown = () => setClicked(true);
-    const handleMouseUp = () => setClicked(false);
-    const handleMouseOver = () => setHovered(true);
-    const handleMouseOut = () => setHovered(false);
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseout", handleMouseOut);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
-    };
-  }, []);
-
-  return (
-    <>
-      <motion.div
-        className={`fixed z-50 w-6 h-6 bg-white rounded-full pointer-events-none`}
-        style={{
-          left: position.x,
-          top: position.y,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          scale: clicked ? 0.8 : hovered ? 1.5 : 1,
-          opacity: clicked ? 0.7 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      />
-      <style jsx global>{`
-        body {
-          cursor: none; /* Hide the default cursor */
-        }
-      `}</style>
-    </>
-  );
+    return <motion.div ref={ref} style={{ ...ball, x, y }} />
 }
+
+const spring = { damping: 3, stiffness: 50, restDelta: 0.001 }
+
+export function useFollowPointer(ref: RefObject<HTMLDivElement | null>) {
+    const xPoint = useMotionValue(0)
+    const yPoint = useMotionValue(0)
+    const x = useSpring(xPoint, spring)
+    const y = useSpring(yPoint, spring)
+
+    useEffect(() => {
+        if (!ref.current) return
+
+        const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+            const element = ref.current!
+
+            frame.read(() => {
+                xPoint.set(
+                    clientX - element.offsetLeft - element.offsetWidth / 2
+                )
+                yPoint.set(
+                    clientY - element.offsetTop - element.offsetHeight / 2
+                )
+            })
+        }
+
+        window.addEventListener("pointermove", handlePointerMove)
+
+        return () =>
+            window.removeEventListener("pointermove", handlePointerMove)
+    }, [])
+
+    return { x, y }
+}
+
+/**
+ * ==============   Styles   ================
+ */
+
+const ball = {
+    width: 60,
+    height: 60,
+    backgroundColor: "#34D399",
+    borderRadius: "50%",
+    position: "fixed", // Ensures cursor stays within the viewport
+    pointerEvents: "none", // Prevents interfering with other elements
+    zIndex: 9999, // Ensures it stays on top of all other elements
+};

@@ -1,6 +1,14 @@
 "use client";
 import { FaReact, FaJava } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript, SiNextdotjs, SiSpringboot, SiHibernate, SiMysql, SiHtml5 } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiJavascript,
+  SiNextdotjs,
+  SiSpringboot,
+  SiHibernate,
+  SiMysql,
+  SiHtml5,
+} from "react-icons/si";
 import { MdOutlineDataObject } from "react-icons/md";
 import { motion } from "framer-motion";
 
@@ -30,13 +38,14 @@ export default function Skills() {
 
   return (
     <motion.div
-      className="mt-20 px-5 py-10 md:px-0"
+    id="Skills"
+      className="pt-32 px-2 py-10"
       initial="hidden"
       animate="visible"
       variants={containerVariant}
     >
       <motion.h2
-        className="text-2xl mb-6 font-semibold text-center text-white"
+        className="text-4xl font-bold text-center mb-12 text-green-400"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -45,7 +54,7 @@ export default function Skills() {
       </motion.h2>
 
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-6 justify-center mx-auto"
+        className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-6"
         variants={containerVariant}
         initial="hidden"
         whileInView="visible"
@@ -57,16 +66,14 @@ export default function Skills() {
             className="relative flex items-center justify-center bg-zinc-800 rounded-lg p-4 my-10 h-32 w-32 group mx-auto"
             variants={itemVariant}
             whileHover={{
-              scale: 1.1, // Slightly increase size on hover
-              rotate: 5, // Add slight rotation on hover
-              boxShadow: "0 4px 30px rgba(0, 255, 0, 0.8)", // Brighter light green glow
-              transition: { duration: 0.3, ease: "easeInOut" },
+              scale: 1.2,
+              rotate: 5,
+              boxShadow: "0 8px 20px rgba(0, 255, 0, 0.8)",
+              transition: { duration: 0.4, ease: "easeInOut" },
             }}
           >
             {/* Skill Icon with 3D effect */}
-            <div
-              className="text-5xl transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-6 group-hover:perspective-1000 group-hover:rotate-x-15 group-hover:rotate-y-15"
-            >
+            <div className="text-6xl transition-transform duration-500 transform group-hover:rotate-12 group-hover:scale-125 group-hover:translate-y-1">
               {skill.icon}
             </div>
 

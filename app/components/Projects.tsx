@@ -20,70 +20,80 @@ export default function Projects() {
   };
 
   const slideLeftVariant = {
-    hidden: { opacity: 0, x: "-100%" }, // Start from left
+    hidden: { opacity: 0, x: "-100%" },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
   const slideRightVariant = {
-    hidden: { opacity: 0, x: "100%" }, // Start from right
+    hidden: { opacity: 0, x: "100%" },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
   const projects = [
     {
       title: "Fitizen",
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, nam neque voluptatum eos odit ratione a culpa enim. Explicabo, officia dicta. Id quasi a et eligendi nulla sit, repudiandae illum. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      description: [
+        "Designed and developed responsive web pages using React JS, HTML, and CSS.",
+        "Integrated APIs for seamless communication between the frontend and backend, ensuring efficient data handling.",
+        "Handled form validation and form submission, enhancing user experience through real-time error checking.",
+        "Collaborated efficiently using Git and GitHub for version control and project management.",
+      ],
       image: projectImage1,
     },
     {
-      title: "HealthTrack",
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, nam neque voluptatum eos odit ratione a culpa enim. Explicabo, officia dicta. Id quasi a et eligendi nulla sit, repudiandae illum. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      title: "CFO Motilal Oswal",
+      description: [
+        "Enabled file uploading and downloading, including Excel file handling, to support data import/export features.",
+        "Developed and implemented CRUD operations using React JS, ensuring efficient data management and UI functionality.",
+        "Performed form validation and API binding to ensure smooth data flow between the front-end and back-end systems.",
+        "Integrated React Select and React Multiselect for dynamic user input selection and enhanced form interactions.",
+      ],
       image: projectImage2,
     },
   ];
 
-  const [ref, inView] = useInView({ threshold: 0.2 });
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
-    } else {
-      controls.start("hidden");
     }
   }, [inView, controls]);
 
   return (
     <motion.div
-      className="mt-24 px-5 md:px-0"
+      id="Projects"
+      className="pt-32 px-5 md:px-0"
       initial="hidden"
       animate={controls}
       variants={containerVariant}
       ref={ref}
     >
-      <motion.h2 className="text-2xl mb-4" variants={fadeInVariant}>
+      <motion.h2 className="text-4xl font-bold text-center mb-12 text-green-400" variants={fadeInVariant}>
         Projects
       </motion.h2>
 
       {projects.map((project, index) => (
         <motion.div
           key={index}
-          className="mb-12"
+          className="mb-12 group transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg p-4"
           variants={fadeInVariant}
           initial="hidden"
           animate={controls}
         >
           <div className="flex items-center space-x-4">
             <motion.h3
-              className="text-xl font-semibold"
+              className="text-xl font-semibold transition-all duration-300 group-hover:scale-110 group-hover:text-green-500"
               whileHover={{
-                scale: 1.05, // Slight scale increase
-                color: "#34D399", // Change text color to green
+                scale: 1.1,
+                color: "#34D399",
                 transition: { duration: 0.3 },
               }}
-              variants={slideLeftVariant} // Apply slide-in from left for title
+              variants={slideLeftVariant}
             >
               {project.title}
             </motion.h3>
@@ -91,32 +101,35 @@ export default function Projects() {
           <div className="flex flex-col md:flex-row items-start mt-4">
             <motion.div
               className="md:w-2/3 pr-6"
-              variants={slideLeftVariant} // Apply slide-in from left for description
+              variants={slideLeftVariant}
+              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
-              <motion.p
-                className="text-sm py-4"
-                whileHover={{
-                  color: "#34D399", // Change text color to green
-                  transition: { duration: 0.3 },
-                }}
-              >
-                {project.description}
-              </motion.p>
+              <ul className="list-disc list-inside text-sm py-4">
+                {project.description.map((point, i) => (
+                  <li
+                    key={i}
+                    className="transition-colors duration-300 hover:text-green-500"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
             <motion.div
               className="md:w-1/3 mt-4 md:mt-0"
-              variants={slideRightVariant} // Apply slide-in from right for image
+              variants={slideRightVariant}
             >
               <motion.div
                 whileHover={{
-                  scale: 1.05, // Scale the image up slightly
+                  scale: 1.1,
                   transition: { duration: 0.3 },
                 }}
+                className="rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl"
               >
                 <Image
                   src={project.image}
                   alt={project.title}
-                  className="rounded-lg shadow-md"
+                  className="rounded-lg"
                   width={400}
                   height={200}
                 />

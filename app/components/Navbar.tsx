@@ -5,13 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 interface NavigationItem {
   name: string;
   current: boolean;
+  id: string; // Add an ID to associate with sections
 }
 
 const navigation: NavigationItem[] = [
-  { name: "Home", current: true },
-  { name: "Projects", current: false },
-  { name: "Skills", current: false },
-  { name: "Contact", current: false },
+  { name: "Home", current: true, id: "Home" },
+  { name: "Experience", current: false, id: "Experience" },
+  { name: "Projects", current: false, id: "Projects" },
+  { name: "Skills", current: false, id: "Skills" },
+  { name: "Contact", current: false, id: "contact" },
 ];
 
 export default function Navbar() {
@@ -80,7 +82,20 @@ export default function Navbar() {
               className={`text-white font-medium hover:text-green-400 pb-0.5 relative cursor-pointer ${
                 activeItem === item.name ? "text-green-400" : ""
               }`}
-              onClick={() => setActiveItem(item.name)}
+              onClick={() => {
+                setActiveItem(item.name); // Update the active item state
+                // setIsOpen(false); // Close the dropdown for small screens
+              
+                // Smooth scrolling logic
+                const section = document.getElementById(item.id);
+                if (section) {
+                  window.scrollTo({
+                    top: section.offsetTop - 50, // Adjust offset to account for fixed navbar
+                    behavior: "smooth", // Enable smooth scrolling
+                  });
+                }
+              }}
+              
               initial="hidden"
               animate="visible"
               variants={itemVariant}
@@ -99,15 +114,13 @@ export default function Navbar() {
             </motion.li>
           ))}
           <motion.li
-            className="bg-green-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:bg-green-500 px-5 text-black font-medium py-2 rounded-3xl cursor-pointer"
+            className="bg-green-400  hover:bg-green-500 px-5 text-black font-medium py-2 rounded-3xl cursor-pointer"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
             whileHover={{
-              scale: 1.1, // Scale up
-              backgroundColor: "rgb(34, 197, 94)", // Darker green on hover
-              boxShadow: "0 4px 15px rgba(0, 255, 0, 0.5)", // Add a shadow effect
-              transition: { duration: 0.3 }, // Smooth transition
+              scale: 1.1,
+              boxShadow: "0px 0px 12px rgba(34, 197, 94, 0.8)",
             }}
           >
             Hire me
@@ -132,9 +145,19 @@ export default function Navbar() {
                   activeItem === item.name ? "text-green-400" : "text-white"
                 }`}
                 onClick={() => {
-                  setActiveItem(item.name);
-                  setIsOpen(false); // Close the dropdown after selecting an item
+                  setActiveItem(item.name); // Update the active item state
+                  setIsOpen(false); // Close the dropdown for small screens
+                
+                  // Smooth scrolling logic
+                  const section = document.getElementById(item.id);
+                  if (section) {
+                    window.scrollTo({
+                      top: section.offsetTop - 50, // Adjust offset to account for fixed navbar
+                      behavior: "smooth", // Enable smooth scrolling
+                    });
+                  }
                 }}
+                
                 whileHover={{
                   scale: 1.1,
                   textShadow: "0 0 8px rgba(0, 255, 0, 0.6)", // Hover effect for dropdown

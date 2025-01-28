@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import we3 from "../assets/logo_dark.png";
-import we31 from "../assets/developer-8829735_1280.webp";
+import developerImage from "../assets/developer-8829735_1280.webp";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -20,12 +20,12 @@ export default function Experience() {
   };
 
   const slideLeftVariant = {
-    hidden: { opacity: 0, x: "-100%" }, // Start from left
+    hidden: { opacity: 0, x: "-100%" },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
   const slideRightVariant = {
-    hidden: { opacity: 0, x: "100%" }, // Start from right
+    hidden: { opacity: 0, x: "100%" },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
@@ -39,152 +39,159 @@ export default function Experience() {
       controls.start("hidden");
     }
   }, [inView, controls]);
+
   return (
-    <motion.div
-      className="mt-24 px-5 md:px-0"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariant}
-      ref={ref}
-    >
-      <motion.h2
-        variants={fadeInVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        Experience
-      </motion.h2>
-
-      {/* First Experience Block */}
+    <div id="Experience">
       <motion.div
-        className="flex items-center space-x-4"
-        variants={fadeInVariant}
+        className="pt-32 px-5 md:px-0"
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        animate={controls}
+        variants={containerVariant}
+        ref={ref}
       >
-        <motion.div whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}>
-          <Image src={we3} alt="profile_pic" className="w-8 h-4" />
-        </motion.div>
-        <motion.h3
-          whileHover={{
-            color: "#34D399", // Change text color on hover
-            scale: 1.1, // Slight scale increase on hover
-            transition: { duration: 0.3 },
-          }}
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-green-400"
+          variants={fadeInVariant}
         >
-          We3 Tech Work
-        </motion.h3>
-      </motion.div>
+          Experience
+        </motion.h2>
 
-      <motion.div
-        className="flex flex-col-reverse md:flex-row justify-between"
-        variants={fadeInVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+        {/* We3 Tech Experience */}
         <motion.div
-          className="md:w-2/3 pr-6"
-          variants={slideLeftVariant} // Apply slide-in from left for text
-          whileHover={{
-            scale: 1.1, // Increase image size slightly on hover
-            transition: { duration: 0.3 },
-          }}
+          className="flex items-center space-x-4 group"
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="text-sm py-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, nam
-            neque voluptatum eos odit ratione a culpa enim. Explicabo, officia
-            dicta. Id quasi a et eligendi nulla sit, repudiandae illum. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita
-            modi ex. Fugiat porro blanditiis quod reiciendis assumenda. Aperiam
-            ipsam placeat cumque amet accusamus veritatis non quasi ipsa
-            provident fugit.
-          </div>
+          <motion.div
+            whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
+            className="transition-transform duration-300"
+          >
+            <Image src={we3} alt="We3 Tech Logo" className="w-8 h-8" />
+          </motion.div>
+          <motion.h3
+            className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300"
+          >
+            Software Developer - We3 Tech (July 2024 - Present)
+          </motion.h3>
         </motion.div>
 
         <motion.div
-          className="md:w-1/3 mt-4"
-          variants={slideRightVariant}
-          whileHover={{
-            scale: 1.1, // Increase image size slightly on hover
-            transition: { duration: 0.3 },
-          }} // Apply slide-in from right for image
+          className="flex flex-col-reverse md:flex-row justify-between group"
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <Image
-            src={we31}
-            alt="we3"
-            className="md:w-72 md:h-40 w-full rounded-xl"
-            
-          />
-        </motion.div>
-      </motion.div>
+          <motion.div
+            className="md:w-2/3 pr-6"
+            variants={slideLeftVariant}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            <div className="text-sm py-4 space-y-2">
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Developed responsive web applications using React.js, HTML, CSS, and Bootstrap, ensuring seamless user experience across multiple devices.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Integrated APIs, improving data flow and communication between frontend and backend systems.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Enhanced user experience with features like form validation, API binding, and dynamic input handling using React Select and Multiselect.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Collaborated using Git and GitHub for efficient project management and version control.
+              </p>
+            </div>
+          </motion.div>
 
-      {/* Second Experience Block */}
-      <motion.div
-        className="flex items-center space-x-4"
-        variants={fadeInVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.div whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}>
-          <Image src={we3} alt="profile_pic" className="w-8 h-4" />
+          <motion.div
+            className="md:w-1/3 mt-4"
+            variants={slideRightVariant}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+              transition: { duration: 0.3 },
+            }}
+          >
+            <Image
+              src={developerImage}
+              alt="Developer at work"
+              className="rounded-lg shadow-md"
+              width={400}
+              height={200}
+            />
+          </motion.div>
         </motion.div>
-        <motion.h3
-          whileHover={{
-            color: "#34D399", // Change text color on hover
-            scale: 1.1, // Slight scale increase on hover
-            transition: { duration: 0.3 },
-          }}
-        >
-          We3 Tech Work
-        </motion.h3>
-      </motion.div>
 
-      <motion.div
-        className="flex flex-col-reverse md:flex-row justify-between"
-        variants={fadeInVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+        {/* Schoolshiring.com Experience */}
         <motion.div
-          className="md:w-2/3 pr-6"
-          variants={slideLeftVariant}
-          whileHover={{
-            scale: 1.1, // Increase image size slightly on hover
-            transition: { duration: 0.3 },
-          }} // Apply slide-in from left for text
+          className="flex items-center space-x-4 mt-16 group"
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="text-sm py-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, nam
-            neque voluptatum eos odit ratione a culpa enim. Explicabo, officia
-            dicta. Id quasi a et eligendi nulla sit, repudiandae illum. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita
-            modi ex. Fugiat porro blanditiis quod reiciendis assumenda. Aperiam
-            ipsam placeat cumque amet accusamus veritatis non quasi ipsa
-            provident fugit.
-          </div>
+          <motion.div
+            whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
+            className="transition-transform duration-300"
+          >
+            <Image src={we3} alt="Schoolshiring Logo" className="w-8 h-8" />
+          </motion.div>
+          <motion.h3
+            className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300"
+          >
+            Software Engineer Associate - Schoolshiring.com (Jan 2023 - Dec 2023)
+          </motion.h3>
         </motion.div>
 
         <motion.div
-          className="md:w-1/3 mt-4"
-          variants={slideRightVariant} // Apply slide-in from right for image
-          whileHover={{
-            scale: 1.1, // Increase image size slightly on hover
-            transition: { duration: 0.3 },
-          }}
+          className="flex flex-col-reverse md:flex-row justify-between group"
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <Image
-            src={we31}
-            alt="we3"
-            className="md:w-72 md:h-40 w-full rounded-xl"
-            
-          />
+          <motion.div
+            className="md:w-2/3 pr-6"
+            variants={slideLeftVariant}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+          >
+            <div className="text-sm py-4 space-y-2">
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Integrated responsive and user-friendly frontend components using React.js.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Conducted thorough debugging to resolve issues, optimizing platform performance.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Implemented RESTful APIs using Spring Boot, enhancing communication between frontend and backend.
+              </p>
+              <p className="hover:text-green-500 transition-colors duration-300">
+                - Improved platform reliability and maintainability through efficient coding practices.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="md:w-1/3 mt-4"
+            variants={slideRightVariant}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+              transition: { duration: 0.3 },
+            }}
+          >
+            <Image
+              src={developerImage}
+              alt="Developer working on Schoolshiring"
+              className="rounded-lg shadow-md"
+              width={400}
+              height={200}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
