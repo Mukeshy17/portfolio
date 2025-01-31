@@ -5,6 +5,7 @@ import { SiLeetcode } from "react-icons/si";
 import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
 import profile_pic from "../assets/profile1_pic.jpg";
+import { FaXTwitter } from "react-icons/fa6";
 import { Typewriter } from "react-simple-typewriter";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -13,7 +14,7 @@ export default function Hero() {
   const socials = [
     { icon: <FaGithub />, path: "https://github.com/Mukeshy17" },
     { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/mukesh-yadav-18872521a/" },
-    { icon: <FaTwitter />, path: "#" },
+    { icon: <FaXTwitter />, path: "https://x.com/MukeshYada58517" },
     {
       icon: <FaWhatsapp />,
       path: "https://wa.me/917738746486?text=Hi%20Mukesh!%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect.",
@@ -75,7 +76,7 @@ export default function Hero() {
         </p>
         <div className="flex mt-12 items-center justify-start flex-wrap gap-2">
           <a
-            href="/path/to/Mukesh_Resume.pdf" // Replace with the actual hosted URL of your resume
+            href="https://drive.google.com/file/d/1xN-FX_PRQVgXaZesVPV4XJoI0s6NNtmn/view?usp=sharing" // Replace with the actual hosted URL of your resume
             download="Mukesh_Resume.pdf"
             className="transition duration-500 ease-in-out px-5 py-2 mr-8 hover:text-black hover:bg-green-400 rounded-3xl border-2 border-green-400 flex items-center space-x-2"
           >
@@ -103,19 +104,37 @@ export default function Hero() {
       </motion.div>
 
       {/* Right Section (Profile Picture) */}
-      <motion.div
-        className="w-full md:w-1/3 flex justify-center mb-10 md:mb-0"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={profileVariant}
-        whileHover={{ scale: 1.1 }}
-      >
-        <Image
-          className="h-80 w-80 rounded-full"
-          src={profile_pic}
-          alt="Mukesh Yadav"
-        />
-      </motion.div>
+      {/* Right Section */}
+     {/* Right Section */}
+<motion.div className="w-full md:w-1/3 flex justify-center mb-10 md:mb-0 relative">
+  <div className="relative flex justify-center items-center">
+    {/* Animated Circular Arc */}
+    <div className="absolute h-[22rem] w-[22rem] rounded-full animate-spin-slow border-t-4 border-green-400 z-0"></div>
+
+    {/* Profile Picture */}
+    <Image
+      className="h-80 w-80 rounded-full z-10 relative"
+      src={profile_pic}
+      alt="Mukesh Yadav"
+    />
+  </div>
+</motion.div>
+
+<style jsx>{`
+  @keyframes spin-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-circle 5s linear infinite;
+  }
+`}</style>
+
     </div>
   );
 }

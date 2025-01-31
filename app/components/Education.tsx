@@ -21,7 +21,7 @@ export default function Education() {
   return (
     <motion.div
       id="Education"
-      className="pt-32 py-20"
+      className="pt-32 px-5 md:px-0"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

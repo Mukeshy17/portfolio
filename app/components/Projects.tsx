@@ -80,7 +80,7 @@ export default function Projects() {
       {projects.map((project, index) => (
         <motion.div
           key={index}
-          className="mb-12 group transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg p-4"
+          className="mb-12 group transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg"
           variants={fadeInVariant}
           initial="hidden"
           animate={controls}

@@ -6,7 +6,7 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import ContactMe from "./components/Contactme";
-import AnimatedCursor from "./components/AnimatedCursor";
+// import AnimatedCursor from "./components/AnimatedCursor";
 import Education from "./components/Education";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
@@ -44,16 +44,12 @@ export default function Home() {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-14 h-14 text-white flex items-center justify-center shadow-lg z-50 rounded-full"
+        className="fixed bottom-8 border-2 right-8 w-12 h-12 text-white rounded-full flex items-center justify-center shadow-lg z-50"
         style={{
-          borderWidth: "4px",
-          borderStyle: "solid",
-          borderRadius: "50%",
-          borderImageSource: `conic-gradient(
-            grey ${scrollY}%,
-            #60d960 ${scrollY}% 100%
+          background: `conic-gradient(
+            #4ade80 ${scrollY}%,
+            rgba(211, 211, 211, 0.3) ${scrollY}% 100%
           )`,
-          borderImageSlice: 1,
         }}
       >
         <FaArrowUp />

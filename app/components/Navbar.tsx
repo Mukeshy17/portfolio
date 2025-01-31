@@ -13,6 +13,7 @@ const navigation: NavigationItem[] = [
   { name: "Experience", current: false, id: "Experience" },
   { name: "Projects", current: false, id: "Projects" },
   { name: "Skills", current: false, id: "Skills" },
+  { name: "Education", current: false, id: "Education" },
   { name: "Contact", current: false, id: "contact" },
 ];
 

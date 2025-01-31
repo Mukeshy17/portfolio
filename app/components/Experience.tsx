@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import we3 from "../assets/logo_dark.png";
+import schools from "../assets/203x73.png";
 import developerImage from "../assets/developer-8829735_1280.webp";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -136,7 +137,7 @@ export default function Experience() {
             whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
             className="transition-transform duration-300"
           >
-            <Image src={we3} alt="Schoolshiring Logo" className="w-8 h-8" />
+            <Image src={schools} alt="Schoolshiring Logo" className="w-8 h-8" />
           </motion.div>
           <motion.h3
             className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300"
