@@ -75,14 +75,15 @@ export default function Hero() {
           experience in integrating APIs, optimizing performance, and enhancing user experiences.
         </p>
         <div className="flex mt-12 items-center justify-start flex-wrap gap-2">
-          <a
-            href="https://drive.google.com/file/d/1xN-FX_PRQVgXaZesVPV4XJoI0s6NNtmn/view?usp=sharing" // Replace with the actual hosted URL of your resume
-            download="Mukesh_Resume.pdf"
-            className="transition duration-500 ease-in-out px-5 py-2 mr-8 hover:text-black hover:bg-green-400 rounded-3xl border-2 border-green-400 flex items-center space-x-2"
-          >
-            <span>Download CV</span>
-            <FiDownload className="w-5 h-5" />
-          </a>
+        <a
+  href="https://drive.google.com/file/d/1xN-FX_PRQVgXaZesVPV4XJoI0s6NNtmn/view?usp=sharing" // Replace with the actual hosted URL of your resume
+  download="Mukesh_Resume.pdf"
+  className="transition text-sm md:text-xs lg:text-xl duration-500 ease-in-out px-3 md:px-4 lg:px-5 py-1 md:py-2 lg:py-2 mr-4 md:mr-6 lg:mr-8 hover:text-black hover:bg-green-400 rounded-3xl border-2 border-green-400 flex items-center space-x-2"
+>
+  <span>Download CV</span>
+  <FiDownload className="w-4 h-4 md:w-5 md:h-5" />
+</a>
+
 
           {socials.map((item, index) => (
             <motion.a
@@ -109,11 +110,11 @@ export default function Hero() {
 <motion.div className="w-full md:w-1/3 flex justify-center mb-10 md:mb-0 relative">
   <div className="relative flex justify-center items-center">
     {/* Animated Circular Arc */}
-    <div className="absolute h-[22rem] w-[22rem] rounded-full animate-spin-slow border-t-4 border-green-400 z-0"></div>
+    <div className="absolute h-[18rem] w-[18rem] md:h-[22rem] md:w-[22rem] rounded-full animate-spin-slow border-t-4 border-green-400 z-0"></div>
 
     {/* Profile Picture */}
     <Image
-      className="h-80 w-80 rounded-full z-10 relative"
+      className="h-60 w-60 md:h-80 md:w-80 rounded-full z-10 relative"
       src={profile_pic}
       alt="Mukesh Yadav"
     />
