@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import projectImage1 from "../assets/project1.webp";
 import projectImage2 from "../assets/project2.jpg";
+import fitizen from "../assets/fitizen.png";
+import fitizenImg from "../assets/fitizenImg.png";
+import cfo from "../assets/cfo.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Link from "next/link";
+import path from "path";
 
 export default function Projects() {
   // Animation variants
@@ -31,6 +35,7 @@ export default function Projects() {
 
   const projects = [
     {
+      icons: fitizen,
       title: "Fitizen",
       description: [
         "Designed and developed responsive web pages using React JS, HTML, and CSS.",
@@ -38,9 +43,11 @@ export default function Projects() {
         "Handled form validation and form submission, enhancing user experience through real-time error checking.",
         "Collaborated efficiently using Git and GitHub for version control and project management.",
       ],
-      image: projectImage1,
+      image: fitizenImg,
+      path: "https://uat.fitizenindia.com/",
     },
     {
+      icons: cfo,
       title: "CFO Motilal Oswal",
       description: [
         "Enabled file uploading and downloading, including Excel file handling, to support data import/export features.",
@@ -49,6 +56,7 @@ export default function Projects() {
         "Integrated React Select and React Multiselect for dynamic user input selection and enhanced form interactions.",
       ],
       image: projectImage2,
+      path: "",
     },
   ];
 
@@ -73,7 +81,10 @@ export default function Projects() {
       variants={containerVariant}
       ref={ref}
     >
-      <motion.h2 className="text-4xl font-bold text-center mb-12 text-green-400" variants={fadeInVariant}>
+      <motion.h2
+        className="text-4xl font-bold text-center mb-12 text-green-400"
+        variants={fadeInVariant}
+      >
         Projects
       </motion.h2>
 
@@ -82,10 +93,20 @@ export default function Projects() {
           key={index}
           className="mb-12 group transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg"
           variants={fadeInVariant}
-          initial="hidden"
-          animate={controls}
         >
           <div className="flex items-center space-x-4">
+            {project.icons && (
+              <motion.div
+                whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
+                className="transition-transform duration-300"
+              >
+                <Image
+                  src={project.icons}
+                  alt={`${project.title} Logo`}
+                  className="w-20 h-8"
+                />
+              </motion.div>
+            )}
             <motion.h3
               className="text-xl font-semibold transition-all duration-300 group-hover:scale-110 group-hover:text-green-500"
               whileHover={{
@@ -98,7 +119,7 @@ export default function Projects() {
               {project.title}
             </motion.h3>
           </div>
-          <div className="flex flex-col md:flex-row items-start mt-4">
+          <div className="flex flex-col md:flex-row gap-4 items-start mt-4">
             <motion.div
               className="md:w-2/3 pr-6"
               variants={slideLeftVariant}
@@ -115,15 +136,13 @@ export default function Projects() {
                 ))}
               </ul>
             </motion.div>
-            <motion.div
-              className="md:w-1/3 mt-4 md:mt-0"
-              variants={slideRightVariant}
-            >
-              <motion.div
+            <motion.div className="md:w-1/3" variants={slideRightVariant}>
+              <motion.a
                 whileHover={{
                   scale: 1.1,
                   transition: { duration: 0.3 },
                 }}
+                href={project.path}
                 className="rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl"
               >
                 <Image
@@ -133,7 +152,7 @@ export default function Projects() {
                   width={400}
                   height={200}
                 />
-              </motion.div>
+              </motion.a>
             </motion.div>
           </div>
         </motion.div>

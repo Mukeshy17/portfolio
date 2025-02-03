@@ -1,6 +1,6 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
@@ -24,11 +24,6 @@ export default function Hero() {
 
   const textVariant = {
     hidden: { opacity: 0, x: "-100%" },
-    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
-  };
-
-  const profileVariant = {
-    hidden: { opacity: 0, x: "100%" },
     visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
