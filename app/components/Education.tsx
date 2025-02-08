@@ -21,7 +21,7 @@ export default function Education() {
   return (
     <motion.div
       id="Education"
-      className="pt-32 px-5 md:px-0"
+      className="md:pt-24 pt-8 px-12 md:px-0"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -44,7 +44,7 @@ export default function Education() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.h3
-            className="text-2xl font-semibold text-teal-400"
+            className="text-2xl font-semibold text-green-300"
             variants={fadeInLeftVariant}
             initial="hidden"
             whileInView="visible"
@@ -53,7 +53,7 @@ export default function Education() {
             SSC - 2017
           </motion.h3>
           <motion.p
-            className="text-lg text-gray-400"
+            className="text-lg text-white"
             variants={fadeInRightVariant}
             initial="hidden"
             whileInView="visible"
@@ -70,7 +70,7 @@ export default function Education() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.h3
-            className="text-2xl font-semibold text-teal-400"
+            className="text-2xl font-semibold text-green-300"
             variants={fadeInLeftVariant}
             initial="hidden"
             whileInView="visible"
@@ -79,7 +79,7 @@ export default function Education() {
             HSC - 2019
           </motion.h3>
           <motion.p
-            className="text-lg text-gray-400"
+            className="text-lg text-white"
             variants={fadeInRightVariant}
             initial="hidden"
             whileInView="visible"
@@ -96,7 +96,7 @@ export default function Education() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.h3
-            className="text-2xl font-semibold text-teal-400"
+            className="text-2xl font-semibold text-green-300"
             variants={fadeInLeftVariant}
             initial="hidden"
             whileInView="visible"
@@ -114,7 +114,7 @@ export default function Education() {
             Aug 2019 - May 2023
           </motion.p>
           <motion.p
-            className="text-lg text-gray-400"
+            className="text-lg text-white"
             variants={fadeInRightVariant}
             initial="hidden"
             whileInView="visible"

@@ -44,7 +44,7 @@ export default function Experience() {
   return (
     <div id="Experience">
       <motion.div
-        className="pt-32 px-5 md:px-0"
+        className="md:pt-32 pt-20 px-5 md:px-0"
         initial="hidden"
         animate={controls}
         variants={containerVariant}
@@ -71,9 +71,7 @@ export default function Experience() {
           >
             <Image src={we3} alt="We3 Tech Logo" className="w-8 h-8" />
           </motion.div>
-          <motion.h3
-            className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300"
-          >
+          <motion.h3 className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300">
             Software Developer - We3 Tech (July 2024 - Present)
           </motion.h3>
         </motion.div>
@@ -86,28 +84,34 @@ export default function Experience() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div
-            className="md:w-2/3 pr-6"
+            className="md:w-2/3 pr-0 md:pr-6"
             variants={slideLeftVariant}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
             <div className="text-sm py-4 space-y-2">
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Developed responsive web applications using React.js, HTML, CSS, and Bootstrap, ensuring seamless user experience across multiple devices.
+                - Developed responsive web applications using React.js, HTML,
+                CSS, and Bootstrap, ensuring seamless user experience across
+                multiple devices.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Integrated APIs, improving data flow and communication between frontend and backend systems.
+                - Integrated APIs, improving data flow and communication between
+                frontend and backend systems.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Enhanced user experience with features like form validation, API binding, and dynamic input handling using React Select and Multiselect.
+                - Enhanced user experience with features like form validation,
+                API binding, and dynamic input handling using React Select and
+                Multiselect.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Collaborated using Git and GitHub for efficient project management and version control.
+                - Collaborated using Git and GitHub for efficient project
+                management and version control.
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:w-1/3 mt-4"
+            className="w-full md:w-1/3 mt-4"
             variants={slideRightVariant}
             whileHover={{
               scale: 1.1,
@@ -118,7 +122,7 @@ export default function Experience() {
             <Image
               src={developerImage}
               alt="Developer at work"
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md w-full"
               width={400}
               height={200}
             />
@@ -139,10 +143,9 @@ export default function Experience() {
           >
             <Image src={schools} alt="Schoolshiring Logo" className="w-8 h-8" />
           </motion.div>
-          <motion.h3
-            className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300"
-          >
-            Software Engineer Associate - Schoolshiring.com (Jan 2023 - Dec 2023)
+          <motion.h3 className="group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300">
+            Software Engineer Associate - Schoolshiring.com (Jan 2023 - Dec
+            2023)
           </motion.h3>
         </motion.div>
 
@@ -154,28 +157,32 @@ export default function Experience() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div
-            className="md:w-2/3 pr-6"
+            className="md:w-2/3 pr-0 md:pr-6"
             variants={slideLeftVariant}
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
             <div className="text-sm py-4 space-y-2">
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Integrated responsive and user-friendly frontend components using React.js.
+                - Integrated responsive and user-friendly frontend components
+                using React.js.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Conducted thorough debugging to resolve issues, optimizing platform performance.
+                - Conducted thorough debugging to resolve issues, optimizing
+                platform performance.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Implemented RESTful APIs using Spring Boot, enhancing communication between frontend and backend.
+                - Implemented RESTful APIs using Spring Boot, enhancing
+                communication between frontend and backend.
               </p>
               <p className="hover:text-green-500 transition-colors duration-300">
-                - Improved platform reliability and maintainability through efficient coding practices.
+                - Improved platform reliability and maintainability through
+                efficient coding practices.
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            className="md:w-1/3 mt-4"
+            className="w-full md:w-1/3 mt-4"
             variants={slideRightVariant}
             whileHover={{
               scale: 1.1,
@@ -186,7 +193,7 @@ export default function Experience() {
             <Image
               src={developerImage}
               alt="Developer working on Schoolshiring"
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md w-full"
               width={400}
               height={200}
             />

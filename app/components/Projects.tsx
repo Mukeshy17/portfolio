@@ -75,7 +75,7 @@ export default function Projects() {
   return (
     <motion.div
       id="Projects"
-      className="pt-32 px-5 md:px-0"
+      className="md:pt-32 pt-20 px-5 md:px-0"
       initial="hidden"
       animate={controls}
       variants={containerVariant}
@@ -121,7 +121,7 @@ export default function Projects() {
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-start mt-4">
             <motion.div
-              className="md:w-2/3 pr-6"
+              className="md:w-2/3 pr-0 md:pr-6"
               variants={slideLeftVariant}
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
@@ -136,7 +136,7 @@ export default function Projects() {
                 ))}
               </ul>
             </motion.div>
-            <motion.div className="md:w-1/3" variants={slideRightVariant}>
+            <motion.div className="w-full md:w-1/3" variants={slideRightVariant}>
               <motion.a
                 whileHover={{
                   scale: 1.1,
@@ -148,7 +148,7 @@ export default function Projects() {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  className="rounded-lg"
+                  className="rounded-lg w-full"
                   width={400}
                   height={200}
                 />

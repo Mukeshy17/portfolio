@@ -39,7 +39,7 @@ export default function Skills() {
   return (
     <motion.div
     id="Skills"
-      className="pt-32 md:px-2 py-10"
+      className="md:pt-32 pt-14 md:px-2 py-10"
       initial="hidden"
       animate="visible"
       variants={containerVariant}
@@ -63,7 +63,7 @@ export default function Skills() {
         {skills.map((skill, index) => (
           <motion.div
             key={index}
-            className="relative flex items-center justify-center bg-zinc-800 rounded-lg p-4 my-10 mx-auto h-32 w-32 group"
+            className="relative flex items-center justify-center rounded-lg p-4 my-10 mx-auto h-32 w-32 group"
             variants={itemVariant}
             whileHover={{
               scale: 1.2,

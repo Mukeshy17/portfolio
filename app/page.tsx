@@ -10,6 +10,7 @@ import ContactMe from "./components/Contactme";
 import Education from "./components/Education";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import BackgroundStars from "./components/BackgroundStars";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -40,20 +41,22 @@ export default function Home() {
       <Skills />
       <Education />
       <ContactMe />
+      <BackgroundStars/>
 
       {/* Scroll to Top Button */}
       <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 border-2 right-8 w-12 h-12 text-white rounded-full flex items-center justify-center shadow-lg z-50"
-        style={{
-          background: `conic-gradient(
-            #4ade80 ${scrollY}%,
-            rgba(211, 211, 211, 0.3) ${scrollY}% 100%
-          )`,
-        }}
-      >
-        <FaArrowUp />
-      </button>
+  onClick={scrollToTop}
+  className="fixed bottom-8 border-2 border-green-500 right-8 w-12 h-12 text-white rounded-full flex items-center justify-center shadow-lg z-50 bg-transparent"
+  style={{
+    background: `conic-gradient(
+      #4ade80 ${scrollY}%,
+      transparent ${scrollY}% 100%
+    )`,
+  }}
+>
+  <FaArrowUp />
+</button>
+
     </div>
   );
 }
