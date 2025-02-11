@@ -8,10 +8,23 @@ import profile_pic from "../assets/profile1_pic.jpg";
 import { FaXTwitter } from "react-icons/fa6";
 import { Typewriter } from "react-simple-typewriter";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, JSX } from "react";
 
 export default function Hero() {
-  const socials = [
+
+
+  interface Social {
+    icon: JSX.Element;
+    path: string;
+  }
+
+  interface Variants {
+    [key: string]: { opacity: number; y?: number; x?: string } | ((index?: number) => { opacity: number; y?: number; x?: number; transition: { delay?: number; duration: number; ease?: string } });
+    hidden: { opacity: number; y?: number; x?: string };
+    visible: (index?: number) => { opacity: number; y?: number; x?: number; transition: { delay?: number; duration: number; ease?: string } };
+  }
+
+  const socials: Social[] = [
     { icon: <FaGithub />, path: "https://github.com/Mukeshy17" },
     {
       icon: <FaLinkedin />,
@@ -25,14 +38,14 @@ export default function Hero() {
     { icon: <SiLeetcode />, path: "https://leetcode.com/mukya" },
   ];
 
-  const textVariant = {
+  const textVariant: Variants = {
     hidden: { opacity: 0, x: "-100%" },
-    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+    visible: () => ({ opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } }),
   };
 
-  const socialVariant = {
+  const socialVariant: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (index) => ({
+    visible: (index = 0) => ({
       opacity: 1,
       y: 0,
       transition: { delay: index * 0.2, duration: 0.6 },
