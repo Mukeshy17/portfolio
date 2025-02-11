@@ -7,7 +7,7 @@ export default function AnimatedCursor() {
     const ref = useRef<HTMLDivElement>(null)
     const { x, y } = useFollowPointer(ref)
 
-    return <motion.div ref={ref} style={{ ...ball, x, y }} />
+    return <motion.div ref={ref} style={{ ...ball, x, y, position: "fixed", pointerEvents: ball.pointerEvents }} />
 }
 
 const spring = { damping: 3, stiffness: 50, restDelta: 0.001 }

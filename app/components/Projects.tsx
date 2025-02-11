@@ -8,8 +8,6 @@ import cfo from "../assets/cfo.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import Link from "next/link";
-import path from "path";
 
 export default function Projects() {
   // Animation variants

@@ -4,17 +4,27 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 export default function ContactMe() {
-  const formRef = useRef();
+  const formRef = useRef<HTMLFormElement>(null);
   const [statusMessage, setStatusMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  interface FormElements extends HTMLFormControlsCollection {
+    name: HTMLInputElement;
+    email: HTMLInputElement;
+    message: HTMLTextAreaElement;
+  }
+
+  interface ContactForm extends HTMLFormElement {
+    readonly elements: FormElements;
+  }
+
+  const handleSubmit = (e: React.FormEvent<ContactForm>) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
         "service_46ji0bj", // Replace with your service ID
         "template_duvukrf", // Replace with your template ID
-        formRef.current,
+        formRef.current as HTMLFormElement,
         "0u5kYWpGTREKkJiUj" // Replace with your public key
       )
       .then(
@@ -26,7 +36,7 @@ export default function ContactMe() {
           console.error("EmailJS Error:", error);
         }
       );
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   return (

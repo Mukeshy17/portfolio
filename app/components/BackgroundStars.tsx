@@ -3,7 +3,8 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 const BackgroundStars = () => {
-  const containerRef = useRef(null);
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Set up the scene, camera, and renderer.
@@ -20,7 +21,10 @@ const BackgroundStars = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-    containerRef.current.appendChild(renderer.domElement);
+    const container = containerRef.current;
+    if (container) {
+      container.appendChild(renderer.domElement);
+    }
 
     // Create a star field.
     const starsGeometry = new THREE.BufferGeometry();
@@ -60,9 +64,8 @@ const BackgroundStars = () => {
 
     // Cleanup on component unmount.
     return () => {
-      window.removeEventListener("resize", onWindowResize, false);
-      if (containerRef.current && renderer.domElement) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (container && renderer.domElement) {
+        container.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
