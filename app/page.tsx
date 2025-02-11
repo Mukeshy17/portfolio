@@ -6,7 +6,6 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import ContactMe from "./components/Contactme";
-// import AnimatedCursor from "./components/AnimatedCursor";
 import Education from "./components/Education";
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
@@ -33,7 +32,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* <AnimatedCursor /> */}
       <Navbar />
       <Hero />
       <Experience />
