@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 text-white px-10 md:px-48 py-5">
+    <div className={`fixed top-0 ${isOpen ? "bg-transparent backdrop-filter backdrop-blur-md" : ""} md:bg-transparent md:backdrop-filter md:backdrop-blur-md left-0 right-0 z-50 text-white px-10 md:px-48 py-5`}>
       {/* Navbar Container */}
       <div className="flex items-center justify-between h-14">
         {/* Logo */}
@@ -134,7 +134,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.ul
-            className="md:hidden flex flex-col space-y-4 mt-4"
+            className="md:hidden flex flex-col bg-transparent backdrop-filter backdrop-blur-md space-y-4 mt-4"
             variants={dropdownVariant}
             initial="hidden"
             animate="visible"
