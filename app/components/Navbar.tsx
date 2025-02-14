@@ -114,8 +114,9 @@ export default function Navbar() {
               )}
             </motion.li>
           ))}
-          <motion.li
+          <motion.a
             className="bg-green-400  hover:bg-green-500 px-5 text-black font-medium py-2 rounded-3xl cursor-pointer"
+            href="https://wa.me/917738746486?text=Hi%20Mukesh!%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -125,7 +126,7 @@ export default function Navbar() {
             }}
           >
             Hire me
-          </motion.li>
+          </motion.a>
         </ul>
       </div>
 
