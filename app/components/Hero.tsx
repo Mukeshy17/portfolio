@@ -11,17 +11,27 @@ import { motion, useInView } from "framer-motion";
 import { useRef, JSX } from "react";
 
 export default function Hero() {
-
-
   interface Social {
     icon: JSX.Element;
     path: string;
   }
 
   interface Variants {
-    [key: string]: { opacity: number; y?: number; x?: string } | ((index?: number) => { opacity: number; y?: number; x?: number; transition: { delay?: number; duration: number; ease?: string } });
+    [key: string]:
+      | { opacity: number; y?: number; x?: string }
+      | ((index?: number) => {
+          opacity: number;
+          y?: number;
+          x?: number;
+          transition: { delay?: number; duration: number; ease?: string };
+        });
     hidden: { opacity: number; y?: number; x?: string };
-    visible: (index?: number) => { opacity: number; y?: number; x?: number; transition: { delay?: number; duration: number; ease?: string } };
+    visible: (index?: number) => {
+      opacity: number;
+      y?: number;
+      x?: number;
+      transition: { delay?: number; duration: number; ease?: string };
+    };
   }
 
   const socials: Social[] = [
@@ -40,7 +50,11 @@ export default function Hero() {
 
   const textVariant: Variants = {
     hidden: { opacity: 0, x: "-100%" },
-    visible: () => ({ opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } }),
+    visible: () => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 1, ease: "easeOut" },
+    }),
   };
 
   const socialVariant: Variants = {
@@ -115,38 +129,49 @@ export default function Hero() {
           ))}
         </div>
       </motion.div>
+      <motion.div className="w-full md:w-1/3 flex justify-center mb-20 md:mb-0 relative">
+        {/* Wrapper for Image & Circle */}
+        <div className="relative flex justify-center items-center w-[200px] md:w-[320px] h-[200px] md:h-[320px]">
+          {/* SVG Circle */}
+          <motion.svg
+            className="absolute w-[300px] xl:w-[380px] h-[300px] xl:h-[380px]"
+            viewBox="0 0 506 506"
+            fill="transparent"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.circle
+              cx="253"
+              cy="253"
+              r="250"
+              stroke="#00ff99"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ strokeDasharray: "24 10 0 0" }}
+              animate={{
+                strokeDasharray: [
+                  "215 120 25 25",
+                  "16 25 92 72",
+                  "4 250 22 22",
+                ],
+                rotate: [150, 360],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            />
+          </motion.svg>
 
-      {/* Right Section (Profile Picture) */}
-      {/* Right Section */}
-      {/* Right Section */}
-      <motion.div className="w-full md:w-1/3 flex justify-center mb-10 md:mb-0 relative">
-        <div className="relative flex justify-center items-center">
-          {/* Animated Circular Arc */}
-          <div className="absolute h-[18rem] w-[18rem] md:h-[22rem] md:w-[22rem] rounded-full animate-spin-slow border-t-4 border-green-400 z-0"></div>
-
-          {/* Profile Picture */}
+          {/* Profile Image */}
           <Image
-            className="h-60 w-60 md:h-80 md:w-80 rounded-full z-10 relative"
+            className="h-[200px] w-[200px] md:h-[300px] md:w-[300px] rounded-full z-10 relative"
             src={profile_pic}
             alt="Mukesh Yadav"
           />
         </div>
       </motion.div>
-
-      <style jsx>{`
-        @keyframes spin-circle {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        .animate-spin-slow {
-          animation: spin-circle 5s linear infinite;
-        }
-      `}</style>
     </div>
   );
 }
