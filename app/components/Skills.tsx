@@ -78,7 +78,7 @@ export default function Skills() {
             </div>
 
             {/* Tooltip with transition */}
-            <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-green-400 text-black text-sm font-medium px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+            <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-green-400 text-black text-sm font-medium px-3 py-1 rounded-lg opacity-0 md:group-hover:opacity-100 opacity-100   transition-opacity shadow-lg">
               {skill.name}
             </div>
           </motion.div>

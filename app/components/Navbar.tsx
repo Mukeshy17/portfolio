@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`fixed top-0 ${isOpen ? "bg-transparent backdrop-filter backdrop-blur-md" : ""} md:bg-transparent md:backdrop-filter md:backdrop-blur-md left-0 right-0 z-50 text-white px-10 md:px-48 py-5`}>
+    <div className={`fixed top-0 ${isOpen ? "bg-transparent backdrop-filter backdrop-blur-md" : ""} bg-transparent backdrop-filter backdrop-blur-md left-0 right-0 z-50 text-white px-10 md:px-48 py-5`}>
       {/* Navbar Container */}
       <div className="flex items-center justify-between h-14">
         {/* Logo */}
@@ -62,7 +62,15 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.path
+            {isOpen ? (<motion.path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 6l12 12M6 18L18 6"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.5 }}
+            ></motion.path>) : (<motion.path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
@@ -70,7 +78,8 @@ export default function Navbar() {
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.5 }}
-            ></motion.path>
+            ></motion.path>)}
+            
           </motion.svg>
         </button>
 

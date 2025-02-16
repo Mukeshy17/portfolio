@@ -27,8 +27,27 @@ export default function Home() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollDuration = 1800; // Adjust duration (in ms) for smoother effect
+    const start = window.scrollY;
+    const startTime = performance.now();
+  
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3); // Cubic easing function
+  
+    const scrollStep = (currentTime: number) => {
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / scrollDuration, 1);
+      const easeProgress = easeOutCubic(progress);
+  
+      window.scrollTo(0, start * (1 - easeProgress));
+  
+      if (progress < 1) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+  
+    requestAnimationFrame(scrollStep);
   };
+  
 
   return (
     <div>
