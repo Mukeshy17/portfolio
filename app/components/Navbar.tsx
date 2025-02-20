@@ -34,54 +34,63 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`fixed top-0 ${isOpen ? "bg-transparent backdrop-filter backdrop-blur-md" : ""} bg-transparent backdrop-filter backdrop-blur-md left-0 right-0 z-50 text-white px-10 md:px-48 py-5`}>
+    <div
+      className={`fixed top-0 ${
+        isOpen ? "bg-transparent backdrop-filter backdrop-blur-md" : ""
+      } bg-transparent backdrop-filter backdrop-blur-md left-0 right-0 z-50 text-white px-10 md:px-48 py-5`}
+    >
       {/* Navbar Container */}
       <div className="flex items-center justify-between h-14">
         {/* Logo */}
-        <motion.div
-          className="hidden lg:block text-xl font-bold"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Mukesh
-        </motion.div>
-
-        {/* Hamburger Menu (Visible on Small Screens) */}
-        <button
-          className="md:hidden w- block fixed focus:outline-none float-left"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <motion.svg
-            className="w-9 h-9"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        {/* <div className="flex justify-between"> */}
+          {/* Hamburger Menu (Visible on Small Screens) */}
+          <motion.div
+            className="lg:block text-xl font-bold"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {isOpen ? (<motion.path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 6l12 12M6 18L18 6"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+            Mukesh
+          </motion.div>
+          <button
+            className="md:hidden w-block focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <motion.svg
+              className="w-9 h-9"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-            ></motion.path>) : (<motion.path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.5 }}
-            ></motion.path>)}
-            
-          </motion.svg>
-        </button>
+            >
+              {isOpen ? (
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 6l12 12M6 18L18 6"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.5 }}
+                ></motion.path>
+              ) : (
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.5 }}
+                ></motion.path>
+              )}
+            </motion.svg>
+          </button>
+          
+        {/* </div> */}
 
         {/* Navbar Items (Hidden on Small Screens) */}
         <ul className="md:flex hidden space-x-4 lg:space-x-10 items-center">
@@ -95,7 +104,7 @@ export default function Navbar() {
               onClick={() => {
                 setActiveItem(item.name); // Update the active item state
                 // setIsOpen(false); // Close the dropdown for small screens
-              
+
                 // Smooth scrolling logic
                 const section = document.getElementById(item.id);
                 if (section) {
@@ -105,7 +114,6 @@ export default function Navbar() {
                   });
                 }
               }}
-              
               initial="hidden"
               animate="visible"
               variants={itemVariant}
@@ -158,7 +166,7 @@ export default function Navbar() {
                 onClick={() => {
                   setActiveItem(item.name); // Update the active item state
                   setIsOpen(false); // Close the dropdown for small screens
-                
+
                   // Smooth scrolling logic
                   const section = document.getElementById(item.id);
                   if (section) {
@@ -168,7 +176,6 @@ export default function Navbar() {
                     });
                   }
                 }}
-                
                 whileHover={{
                   scale: 1.1,
                   textShadow: "0 0 8px rgba(0, 255, 0, 0.6)", // Hover effect for dropdown
