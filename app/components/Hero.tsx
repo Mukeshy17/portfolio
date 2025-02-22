@@ -102,14 +102,14 @@ export default function Hero() {
           experiences.
         </p>
         <div className="flex mt-12 items-center justify-start flex-wrap gap-2">
-          <a
-            href="https://drive.google.com/file/d/1xN-FX_PRQVgXaZesVPV4XJoI0s6NNtmn/view?usp=sharing" // Replace with the actual hosted URL of your resume
-            download="Mukesh_Resume.pdf"
-            className="transition text-sm md:text-xs lg:text-xl duration-500 ease-in-out px-3 md:px-4 lg:px-5 py-1 md:py-2 lg:py-2 mr-4 md:mr-6 lg:mr-8 hover:text-black hover:bg-green-400 rounded-3xl border-2 border-green-400 flex items-center space-x-2"
-          >
-            <span>Download CV</span>
-            <FiDownload className="w-4 h-4 md:w-5 md:h-5" />
-          </a>
+        <a
+  href="https://drive.google.com/uc?export=download&id=1xN-FX_PRQVgXaZesVPV4XJoI0s6NNtmn"
+  className="transition text-sm md:text-xs lg:text-xl duration-500 ease-in-out px-3 md:px-4 lg:px-5 py-1 md:py-2 lg:py-2 mr-4 md:mr-6 lg:mr-8 hover:text-black hover:bg-green-400 rounded-3xl border-2 border-green-400 flex items-center space-x-2"
+>
+  <span>Download CV</span>
+  <FiDownload className="w-4 h-4 md:w-5 md:h-5" />
+</a>
+
 
           {socials.map((item, index) => (
             <motion.a
