@@ -8,6 +8,7 @@ import cfo from "../assets/cfo.png";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Projects() {
   // Animation variants
@@ -42,7 +43,7 @@ export default function Projects() {
         "Collaborated efficiently using Git and GitHub for version control and project management.",
       ],
       image: fitizenImg,
-      path: "https://uat.fitizenindia.com/",
+      path: "https://fitizenindia.com/",
     },
     {
       icons: cfo,
@@ -54,7 +55,7 @@ export default function Projects() {
         "Integrated React Select and React Multiselect for dynamic user input selection and enhanced form interactions.",
       ],
       image: projectImage2,
-      path: "",
+      path: "#",
     },
   ];
 
@@ -98,11 +99,15 @@ export default function Projects() {
                 whileHover={{ scale: 1.2, transition: { duration: 0.3 } }}
                 className="transition-transform duration-300"
               >
+                <Link href={project
+                  .path}>
                 <Image
                   src={project.icons}
                   alt={`${project.title} Logo`}
                   className="w-20 h-8"
                 />
+                </Link>
+                
               </motion.div>
             )}
             <motion.h3
@@ -114,7 +119,10 @@ export default function Projects() {
               }}
               variants={slideLeftVariant}
             >
+              <Link href={project
+                  .path}>
               {project.title}
+              </Link>
             </motion.h3>
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-start mt-4">
@@ -135,14 +143,17 @@ export default function Projects() {
               </ul>
             </motion.div>
             <motion.div className="w-full md:w-1/3" variants={slideRightVariant}>
-              <motion.a
+              <motion.div
                 whileHover={{
                   scale: 1.1,
+                  boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
                   transition: { duration: 0.3 },
                 }}
-                href={project.path}
+                // href={project.path}
                 className="rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl"
               >
+                <Link href={project
+                  .path}>
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -150,7 +161,8 @@ export default function Projects() {
                   width={400}
                   height={200}
                 />
-              </motion.a>
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
